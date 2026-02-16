@@ -1,4 +1,6 @@
 return {
+	{ "catppuccin/nvim", enabled = false },
+	{ "folke/tokyonight.nvim", enabled = false },
 	{
 		"craftzdog/solarized-osaka.nvim",
 		lazy = true,
