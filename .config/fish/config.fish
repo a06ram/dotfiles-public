@@ -20,3 +20,5 @@ command -qv nvim && alias vim nvim
 
 # Neovim as default editor
 set -gx EDITOR nvim
+
+fish_add_path ~/.local/bin

@@ -29,6 +29,7 @@ require("lazy").setup({
 			},
 		},
 		-- import/override with your plugins
+		{ import = "lazyvim.plugins.extras.util.mini-hipatterns" },
 		{ import = "plugins" },
 	},
 	defaults = {
@@ -63,4 +64,8 @@ require("lazy").setup({
 		},
 	},
 	ui = { border = "rounded" },
+})
+
+require("lazydev").setup({
+	library = { "nvim-dap-ui" },
 })
