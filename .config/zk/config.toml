@@ -10,34 +10,53 @@ filename = "{{format-date now '%Y%m%d%H%M'}}-{{slug title}}"
 # The file extension used for notes.
 extension = "md"
 
+# Template used to generate a note
+template = "default.md"
+
 [extra]
 author = "Alan Mendoza"
 
 # Configuration for index notes
 [group.index.note]
 filename = "index"
-extension = "md"
 template = "index.md"
+
+# Configuration for concepts
+[group.concept.note]
+template = "concept.md"
+
+# Configuration for software guides
+[group.software-guide.note]
+template = "software-guide.md"
+
+# Configuration for hardware guides
+[group.hardware-guide.note]
+template = "hardware-guide.md"
+
+# Configuration for design-tradeoff
+[group.design-tradeoff.note]
+template = "design-tradeoff.md"
 
 [tool]
 editor = "nvim"
 shell = "/usr/bin/fish"
+fzf-preview = "bat -p --color always {-1}"
 
 [alias]
 # Create a new note
-n = "zk new --template default.md $argv"
+n = "zk new $argv"
 
 # Create a new concept
-nc = "zk new --template concept.md $argv"
+nc = "zk new --no-input --group concept $argv"
 
 # Create a new software guide
-nsg = "zk new --template software-guide.md $argv"
+nsg = "zk new --no-input --group software-guide $argv"
 
 # Create a new hardware guide
-nhg = "zk new --template hardware-guide.md $argv"
+nhg = "zk new --no-input --group hardware-guide $argv"
 
 # Create a new design-tradeoff
-ndiff = "zk new --template design-tradeoff.md $argv"
+ndiff = "zk new --no-input --group design-tradeoff $argv"
 
 # Create a new index
 nidx = "zk new --no-input --group index $argv"
@@ -46,10 +65,10 @@ nidx = "zk new --no-input --group index $argv"
 edlast = "zk edit --limit 1 --sort modified- $argv"
 
 # List notes
-ls = "zk list --interactive $argv"
+ls = "zk edit --interactive $argv"
 
 # List notes by tags
-t = "zk list --interactive --tag $argv"
+t = "zk edit --interactive --tag $argv"
 
 # Open the zk configuration file
 config = "vim $HOME/.config/zk/config.toml"

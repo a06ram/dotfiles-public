@@ -103,31 +103,31 @@ end, vim.tbl_extend("force", opts, { desc = "Search notes by a given tag" }))
 keymap.set(
 	"n",
 	";zn",
-	"<cmd>ZkNew { template = 'default.md', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
+	"<cmd>ZkNew { title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
 	{ unpack(opts), desc = "Create a new note" }
 )
 keymap.set(
 	"n",
 	";zc",
-	"<cmd>ZkNew { template = 'concept.md', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
+	"<cmd>ZkNew { group = 'concept', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
 	{ unpack(opts), desc = "Create a new concept" }
 )
 keymap.set(
 	"n",
 	";zs",
-	"<cmd>ZkNew { template = 'software-guide.md', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
+	"<cmd>ZkNew { group = 'software-guide', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
 	{ unpack(opts), desc = "Create a new software guide" }
 )
 keymap.set(
 	"n",
 	";zh",
-	"<cmd>ZkNew { template = 'hardware-guide.md', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
+	"<cmd>ZkNew { group = 'hardware-guide', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
 	{ unpack(opts), desc = "Create a new hardware guide" }
 )
 keymap.set(
 	"n",
 	";zd",
-	"<cmd>ZkNew { template = 'design-tradeoff.md', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
+	"<cmd>ZkNew { group = 'design-tradeoff', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
 	{ unpack(opts), desc = "Create a new design-tradeoff" }
 )
 keymap.set(
@@ -137,6 +137,7 @@ keymap.set(
 	{ unpack(opts), desc = "Create a new index" }
 )
 keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+keymap.set("n", ";zl", "<cmd>ZkLinks<cr>", { unpack(opts), desc = "Open notes linked by the current buffer" })
 
 -- Zen mode
 keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Zen Mode" })
@@ -225,39 +226,39 @@ keymap.set("n", ";s", function()
 end, { desc = "Lists function names, variables, from Treesitter" })
 
 -- Debugging
-keymap.set("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", { desc = "Add a breakpoint" })
+keymap.set("n", ";db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", { desc = "Add a breakpoint" })
 keymap.set(
 	"n",
-	"<leader>dc",
+	";dc",
 	"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
 	{ desc = "Add a breakpoint with a condition" }
 )
-keymap.set("n", "<leader>dm", "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>")
-keymap.set("n", "<leader>dg", "<cmd>lua require'dap'.clear_breakpoints()<cr>", { desc = "Clear breakpoints" })
-keymap.set("n", "<leader>da", "<cmd>Telescope dap list_breakpoints<cr>", { desc = "List of breakpoints" })
-keymap.set("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>")
-keymap.set("n", "<leader>dj", "<cmd>lua require'dap'.step_over()<cr>")
-keymap.set("n", "<leader>dk", "<cmd>lua require'dap'.step_into()<cr>")
-keymap.set("n", "<leader>do", "<cmd>lua require'dap'.step_out()<cr>")
-keymap.set("n", "<leader>dd", function()
+keymap.set("n", ";dm", "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>")
+keymap.set("n", ";dg", "<cmd>lua require'dap'.clear_breakpoints()<cr>", { desc = "Clear breakpoints" })
+keymap.set("n", ";da", "<cmd>Telescope dap list_breakpoints<cr>", { desc = "List of breakpoints" })
+keymap.set("n", ";dc", "<cmd>lua require'dap'.continue()<cr>")
+keymap.set("n", ";dj", "<cmd>lua require'dap'.step_over()<cr>")
+keymap.set("n", ";dk", "<cmd>lua require'dap'.step_into()<cr>")
+keymap.set("n", ";do", "<cmd>lua require'dap'.step_out()<cr>")
+keymap.set("n", ";dd", function()
 	require("dap").disconnect()
 	require("dapui").close()
 end)
-keymap.set("n", "<leader>dt", function()
+keymap.set("n", ";dt", function()
 	require("dap").terminate()
 	require("dapui").close()
 end)
-keymap.set("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>")
-keymap.set("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>")
-keymap.set("n", "<leader>di", function()
+keymap.set("n", ";dr", "<cmd>lua require'dap'.repl.toggle()<cr>")
+keymap.set("n", ";dl", "<cmd>lua require'dap'.run_last()<cr>")
+keymap.set("n", ";di", function()
 	require("dap.ui.widgets").hover()
 end)
-keymap.set("n", "<leader>d?", function()
+keymap.set("n", ";d?", function()
 	local widgets = require("dap.ui.widgets")
 	widgets.centered_float(widgets.scopes)
 end)
-keymap.set("n", "<leader>df", "<cmd>Telescope dap frames<cr>")
-keymap.set("n", "<leader>dh", "<cmd>Telescope dap commands<cr>")
-keymap.set("n", "<leader>de", function()
+keymap.set("n", ";df", "<cmd>Telescope dap frames<cr>")
+keymap.set("n", ";dh", "<cmd>Telescope dap commands<cr>")
+keymap.set("n", ";de", function()
 	require("telescope.builtin").diagnostics({ default_text = ":E:" })
 end)
