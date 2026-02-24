@@ -83,7 +83,6 @@ return {
 		opts = {
 			completion = {
 				menu = {
-					--winblend = vim.o.pumblend,
 					border = "rounded",
 				},
 				documentation = {
