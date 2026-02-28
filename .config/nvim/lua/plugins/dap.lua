@@ -6,7 +6,8 @@ return {
 		dependencies = { "mfussenegger/nvim-dap" },
 		config = function()
 			-- Update the path passed to setup to point to your system or virtual env python binary
-			require("dap-python").setup("/usr/bin/python3")
+			local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+			require("dap-python").setup(path)
 		end,
 	},
 
