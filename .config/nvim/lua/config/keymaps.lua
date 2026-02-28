@@ -233,21 +233,26 @@ end, { desc = "Lists function names, variables, from Treesitter" })
 keymap.set("n", ";db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", { desc = "Add a breakpoint" })
 keymap.set(
 	"n",
-	";dc",
+	";dn",
 	"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<cr>",
 	{ desc = "Add a breakpoint with a condition" }
 )
-keymap.set("n", ";dm", "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>")
+keymap.set(
+	"n",
+	";dm",
+	"<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>",
+	{ desc = "Add a log point" }
+)
 keymap.set("n", ";dg", "<cmd>lua require'dap'.clear_breakpoints()<cr>", { desc = "Clear breakpoints" })
-keymap.set("n", ";da", "<cmd>Telescope dap list_breakpoints<cr>", { desc = "List of breakpoints" })
-keymap.set("n", ";dc", "<cmd>lua require'dap'.continue()<cr>")
-keymap.set("n", ";dj", "<cmd>lua require'dap'.step_over()<cr>")
-keymap.set("n", ";dk", "<cmd>lua require'dap'.step_into()<cr>")
-keymap.set("n", ";do", "<cmd>lua require'dap'.step_out()<cr>")
+keymap.set("n", ";da", "<cmd>Telescope dap list_breakpoints<cr>", { desc = "List breakpoints" })
+keymap.set("n", ";dc", "<cmd>lua require'dap'.continue()<cr>", { desc = "Continue" })
+keymap.set("n", ";dj", "<cmd>lua require'dap'.step_over()<cr>", { desc = "Step over" })
+keymap.set("n", ";dk", "<cmd>lua require'dap'.step_into()<cr>", { desc = "Step into" })
+keymap.set("n", ";do", "<cmd>lua require'dap'.step_out()<cr>", { desc = "Step out" })
 keymap.set("n", ";dd", function()
 	require("dap").disconnect()
 	require("dapui").close()
-end)
+end, { desc = "Close DAP UI" })
 keymap.set("n", ";dt", function()
 	require("dap").terminate()
 	require("dapui").close()
