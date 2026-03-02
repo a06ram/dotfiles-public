@@ -35,8 +35,8 @@ vim.opt.termguicolors = true
 vim.opt.background = "dark"
 
 -- Undercurl
--- vim.cmd([[let &t_Cs = "\e[4:3m"]])
--- vim.cmd([[let &t_Ce = "\e[4:0m"]])
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 if vim.fn.has("nvim-0.8") == 1 then
 	vim.opt.cmdheight = 0
@@ -49,6 +49,7 @@ vim.filetype.add({
 		conf = "tmux",
 	},
 })
+vim.treesitter.language.register("markdown", "mdx")
 
 vim.g.lazyvim_picker = "telescope"
 vim.g.lazyvim_cmp = "blink.cmp"
