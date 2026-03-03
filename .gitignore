@@ -1,2 +1,7 @@
 *~
 *.log
+.config/nvim/lazy-lock.json
+.config/nvim/lazyvim.json
+node_modules/
+package-lock.json
+package.json
