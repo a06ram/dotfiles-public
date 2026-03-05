@@ -6,6 +6,7 @@ return {
 			local ui_config = require("plugins.ui")
 			opts.ui = ui_config.ui
 			vim.list_extend(opts.ensure_installed, {
+				"bash-language-server",
 				"black",
 				"clangd",
 				"debugpy",
@@ -25,6 +26,9 @@ return {
 			inlay_hints = { enabled = false },
 			---@type lspconfig.options
 			servers = {
+				bashls = {
+					single_file_support = true,
+				},
 				clangd = {
 					single_file_support = true,
 				},
