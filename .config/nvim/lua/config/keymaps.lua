@@ -15,6 +15,9 @@ keymap.set("n", "<Leader>D", '"_D')
 keymap.set("v", "<Leader>d", '"_d')
 keymap.set("v", "<Leader>D", '"_D')
 
+-- General keymap
+keymap.set("n", "<leader>qa", ":q!<CR>", { desc = "Quit without saving" })
+
 -- Delete a word backwards
 keymap.set("n", "dw", 'vb"_d')
 
@@ -22,15 +25,12 @@ keymap.set("n", "dw", 'vb"_d')
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- Disable continuations
-keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
-keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
+keymap.set("n", "<Leader>o", "o<Esc>^Da", { unpack(opts), desc = "Add a line below a comment" })
+keymap.set("n", "<Leader>O", "O<Esc>^Da", { unpack(opts), desc = "Add a line above a comment" })
 
 -- Tabs
 keymap.set("n", "<tab>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next tab" })
 keymap.set("n", "<s-tab>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Prev tab" })
-
--- Jumplist
-keymap.set("n", "<C-m>", "<C-i>", { unpack(opts), desc = "Jump forward" })
 
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
@@ -146,15 +146,7 @@ keymap.set(
 keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
 keymap.set("n", ";zl", "<cmd>ZkLinks<cr>", { unpack(opts), desc = "Open notes linked by the current buffer" })
 
--- Zen mode
-keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Zen Mode" })
-
 -- Telescope
-keymap.set("n", "gd", function()
-	-- DO NOT REUSE WINDOW
-	require("telescope.builtin").lsp_definitions({ reuse_win = false })
-end, { desc = "Goto definition" })
-
 keymap.set("n", "sf", function()
 	local telescope = require("telescope")
 	local actions = require("telescope.actions")
