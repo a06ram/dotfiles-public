@@ -15,14 +15,11 @@ keymap.set("n", "<Leader>D", '"_D')
 keymap.set("v", "<Leader>d", '"_d')
 keymap.set("v", "<Leader>D", '"_D')
 
--- General keymap
-keymap.set("n", "<leader>qa", ":q!<CR>", { desc = "Quit without saving" })
-
--- Delete a word backwards
-keymap.set("n", "dw", 'vb"_d')
+-- Quit without saving changes
+keymap.set("n", "<leader>qa", ":q!<CR>", { desc = "Quit without save" })
 
 -- Select all
-keymap.set("n", "<C-a>", "gg<S-v>G")
+keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
 -- Disable continuations
 keymap.set("n", "<Leader>o", "o<Esc>^Da", { unpack(opts), desc = "Add a line below a comment" })
@@ -49,12 +46,12 @@ keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- Diagnostics
-keymap.set("n", "<C-j>", function()
+keymap.set("n", "<C-c>", function()
 	vim.diagnostic.jump({
 		count = 1,
 		float = true,
 	})
-end, opts)
+end, { unpack(opts), desc = "Jump to next diagnostic" })
 
 -- Increment/decrement
 keymap.set("n", "+", function()
@@ -73,15 +70,20 @@ keymap.set("n", "<leader>tu", function()
 end, { desc = "Close Nameless Buffers" })
 
 -- Zk notes
-keymap.set("n", ";za", "<cmd>ZkNotes<cr>", { unpack(opts), desc = "List of all existing notes" })
+keymap.set("n", "<leader>za", "<cmd>ZkNotes<cr>", { unpack(opts), desc = "List of all existing notes" })
 keymap.set(
 	"v",
-	";zf",
+	"<leader>zf",
 	":'<,'>ZkMatch<cr>",
 	{ unpack(opts), desc = "Search notes matching the current visual selection" }
 )
-keymap.set("n", ";zt", "<cmd>ZkTags<cr>", { unpack(opts), desc = "Search notes using a list of all existing tags" })
-keymap.set("n", ";zo", function()
+keymap.set(
+	"n",
+	"<leader>zt",
+	"<cmd>ZkTags<cr>",
+	{ unpack(opts), desc = "Search notes using a list of all existing tags" }
+)
+keymap.set("n", "<leader>zo", function()
 	local inp = vim.fn.input("Tags: ")
 	if inp == "" then
 		return
@@ -105,42 +107,41 @@ keymap.set("n", ";zo", function()
 end, vim.tbl_extend("force", opts, { desc = "Search notes by a given tag" }))
 keymap.set(
 	"n",
-	";zn",
+	"<leader>zn",
 	"<cmd>ZkNew { title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
 	{ unpack(opts), desc = "Create a new note" }
 )
 keymap.set(
 	"n",
-	";zc",
+	"<leader>zc",
 	"<cmd>ZkNew { group = 'concept', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
 	{ unpack(opts), desc = "Create a new concept" }
 )
 keymap.set(
 	"n",
-	";zs",
+	"<leader>zs",
 	"<cmd>ZkNew { group = 'software-guide', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
 	{ unpack(opts), desc = "Create a new software guide" }
 )
 keymap.set(
 	"n",
-	";zh",
+	"<leader>zh",
 	"<cmd>ZkNew { group = 'hardware-guide', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
 	{ unpack(opts), desc = "Create a new hardware guide" }
 )
 keymap.set(
 	"n",
-	";zd",
+	"<leader>zd",
 	"<cmd>ZkNew { group = 'design-tradeoff', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
 	{ unpack(opts), desc = "Create a new design-tradeoff" }
 )
 keymap.set(
 	"n",
-	";zi",
+	"<leader>zi",
 	"<cmd>ZkNew { group = 'index', title = vim.fn.input('Title: '), dir = vim.fn.input('Directory: ') }<cr>",
 	{ unpack(opts), desc = "Create a new index" }
 )
-keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-keymap.set("n", ";zl", "<cmd>ZkLinks<cr>", { unpack(opts), desc = "Open notes linked by the current buffer" })
+keymap.set("n", "<leader>zl", "<cmd>ZkLinks<cr>", { unpack(opts), desc = "Open notes linked by the current buffer" })
 
 -- Telescope
 keymap.set("n", "sf", function()
