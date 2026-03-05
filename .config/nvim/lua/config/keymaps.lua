@@ -56,10 +56,6 @@ keymap.set("n", "<C-j>", function()
 	})
 end, opts)
 
-keymap.set("n", "<leader>i", function()
-	require("craftzdog.lsp").toggleInlayHints()
-end)
-
 -- Increment/decrement
 keymap.set("n", "+", function()
 	return require("dial.map").inc_normal()
