@@ -39,6 +39,7 @@ return {
 						Lua = {
 							workspace = {
 								checkThirdParty = false,
+								library = vim.api.nvim_get_runtime_file("", true),
 							},
 							completion = {
 								workspaceWord = true,
@@ -64,6 +65,7 @@ return {
 								castNumberToInteger = true,
 							},
 							diagnostics = {
+								globals = { "vim" },
 								disable = { "incomplete-signature-doc", "trailing-space" },
 								-- enable = false,
 								groupSeverity = {
