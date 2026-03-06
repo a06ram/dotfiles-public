@@ -13,14 +13,6 @@ return {
 				"gitignore",
 				"make",
 			},
-			ignore_install = { "markdown", "markdown-inline" },
-			auto_install = false,
-			highlight = {
-				disable = {
-					"markdown",
-					"markdown-inline",
-				},
-			},
 		},
 	},
 }
