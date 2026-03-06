@@ -11,11 +11,6 @@ return {
 				"fish",
 				"gitignore",
 				"make",
-				"markdown",
-				"markdown_inline",
-			},
-			highlight = {
-				additional_vim_regex_highlighting = { "markdown" },
 			},
 		},
 	},

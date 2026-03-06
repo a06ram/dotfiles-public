@@ -45,11 +45,9 @@ end
 -- File types
 vim.filetype.add({
 	extension = {
-		mdx = "mdx",
 		conf = "tmux",
 	},
 })
-vim.treesitter.language.register("markdown", "mdx")
 
 vim.g.lazyvim_picker = "telescope"
 vim.g.lazyvim_cmp = "blink.cmp"
