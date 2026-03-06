@@ -20,3 +20,4 @@ set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 set -g FZF_LEGACY_KEYBINDINGS 0
 
 fish_add_path ~/.local/bin
+fish_add_path ~/.node_modules/bin
