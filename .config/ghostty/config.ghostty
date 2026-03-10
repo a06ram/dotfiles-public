@@ -10,9 +10,9 @@ palette = 9=#cb4b16
 background = #1c1c1f
 foreground = #adb8b8
 selection-background = #444444
-background-opacity = 0.9
 
 # Apply background blur if supported by the compositor (no effect on GNOME desktops)
+#background-opacity = 0.9
 #background-blur-radius = 20
 
 cursor-style = block
