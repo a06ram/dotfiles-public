@@ -1,5 +1,6 @@
 theme = "Solarized Dark Patched"
 
+palette = 0=#1c1c1f
 palette = 1=#dc322f
 palette = 2=#859900
 palette = 3=#b58900
