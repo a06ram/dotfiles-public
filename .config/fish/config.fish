@@ -21,3 +21,5 @@ set -g FZF_LEGACY_KEYBINDINGS 0
 
 fish_add_path ~/.local/bin
 fish_add_path ~/.node_modules/bin
+fish_add_path ~/.pyenv/bin
+pyenv init - | source
