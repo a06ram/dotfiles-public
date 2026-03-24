@@ -67,7 +67,7 @@ keymap.set("n", "<leader>th", function()
 end, { desc = "Close hidden buffers" })
 keymap.set("n", "<leader>tu", function()
 	require("close_buffers").delete({ type = "nameless" })
-end, { desc = "Close Nameless Buffers" })
+end, { desc = "Close nameless buffers" })
 
 -- Zk notes
 keymap.set("n", "<leader>za", "<cmd>ZkNotes<cr>", { unpack(opts), desc = "List of all existing notes" })
