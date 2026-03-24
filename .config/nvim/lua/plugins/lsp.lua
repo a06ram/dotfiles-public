@@ -10,6 +10,9 @@ return {
 				"black",
 				"clangd",
 				"debugpy",
+				"jdtls",
+				"java-debug-adapter",
+				"java-test",
 				"pyright",
 				"selene",
 				"shellcheck",
@@ -32,6 +35,7 @@ return {
 				clangd = {
 					single_file_support = true,
 				},
+				jdtls = {},
 				lua_ls = {
 					-- enabled = false,
 					single_file_support = true,
@@ -107,7 +111,11 @@ return {
 					single_file_support = true,
 				},
 			},
-			setup = {},
+			setup = {
+				jdtls = function()
+					return true
+				end,
+			},
 		},
 	},
 }

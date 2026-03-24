@@ -21,6 +21,18 @@ return {
 				opts = { stop = false },
 			})
 
+			table.insert(opts.routes, 2, {
+				filter = {
+					event = "lsp",
+					kind = "progress",
+					any = {
+						{ find = "Validate documents" },
+						{ find = "Publish Diagnostics" },
+					},
+				},
+				opts = { skip = true },
+			})
+
 			opts.commands = {
 				all = {
 					-- options for the message history that you get with `:Noice`
