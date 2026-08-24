@@ -8,7 +8,7 @@ command -qv nvim && alias vim nvim
 if type -q eza
     alias ll "eza -l -g --icons"
     alias lla "ll -a"
-    alias etree "eza --tree --icons"
+    alias etree "eza --tree --icons=auto"
 end
 
 # Neovim as default editor
