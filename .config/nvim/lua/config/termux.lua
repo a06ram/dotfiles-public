@@ -1,0 +1,1 @@
+require("termux.lsp").setup()
