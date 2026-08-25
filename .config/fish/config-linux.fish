@@ -9,3 +9,10 @@ fish_add_path $JAVA_HOME/bin $PATH
 fish_add_path $MAVEN_HOME/bin $PATH
 fish_add_path ~/.pyenv/bin
 pyenv init - | source
+
+# Fzf change directory
+set -g recursive_dirs \
+    $HOME/.dotfiles \
+    $HOME/.notes \
+    $HOME/.dev \
+    $HOME/.containers
