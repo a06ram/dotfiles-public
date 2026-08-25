@@ -1,0 +1,8 @@
+[ghq]
+	root = ~/.ghq
+
+[init]
+  defaultBranch = main
+
+[include]
+  path = ~/.gitconfig.private
